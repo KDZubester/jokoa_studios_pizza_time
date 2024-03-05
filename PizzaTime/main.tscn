@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://dx1k2g47rg5ly"]
+
+[ext_resource type="PackedScene" uid="uid://cni3651neo2qt" path="res://Levels/Props/ground.tscn" id="1_365eg"]
+[ext_resource type="PackedScene" uid="uid://q0diml5d6phb" path="res://Characters/player.tscn" id="2_t6e2y"]
+[ext_resource type="PackedScene" uid="uid://dlpl6qrxnd38g" path="res://vehicles/classic_skate_board.tscn" id="3_u8mxv"]
+[ext_resource type="Script" path="res://Characters/CameraPositionTarget.gd" id="3_ugj28"]
+[ext_resource type="Script" path="res://Characters/PlayerCamera.gd" id="4_5px76"]
+
+[node name="Main" type="Node"]
+
+[node name="Ground" parent="." instance=ExtResource("1_365eg")]
+
+[node name="Player" parent="." instance=ExtResource("2_t6e2y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154331, 1.00013, -0.0157849)
+
+[node name="CameraPositionTarget" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 20, 15)
+script = ExtResource("3_ugj28")
+
+[node name="PlayerCamera" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 10, 20, 10)
+current = true
+script = ExtResource("4_5px76")
+target = NodePath("../Player/CameraPositionTarget")
+lerp_speed = 0.1
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 12, 0)
+
+[node name="ClassicSkateBoard" parent="." instance=ExtResource("3_u8mxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.154331, 0.063518, -0.0157849)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="ClassicSkateBoard"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.936611, 0)
+remote_path = NodePath("../../Player")

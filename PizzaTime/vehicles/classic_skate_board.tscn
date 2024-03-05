@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlpl6qrxnd38g"]
+
+[ext_resource type="Script" path="res://vehicles/classic_skate_board.gd" id="1_jn6d4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_t1f0f"]
+size = Vector3(0.5, 0.125, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mohqe"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sihpk"]
+size = Vector3(0.5, 0.125, 1.5)
+
+[node name="ClassicSkateBoard" type="VehicleBody3D"]
+collision_mask = 4
+angular_damp = 15.0
+script = ExtResource("1_jn6d4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062, 0)
+mesh = SubResource("BoxMesh_t1f0f")
+surface_material_override/0 = SubResource("StandardMaterial3D_mohqe")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.062, 0)
+shape = SubResource("BoxShape3D_sihpk")
+
+[node name="FrontLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603091, 0, 0.491618)
+use_as_steering = true
+
+[node name="FrontRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603, 0, 0.492)
+use_as_steering = true
+
+[node name="BackRight" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.603, 0, -0.492)
+use_as_traction = true
+
+[node name="BackLeft" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603, 0, -0.492)
+use_as_traction = true
