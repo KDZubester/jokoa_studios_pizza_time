@@ -4,6 +4,8 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ydbhs"]
 albedo_texture = ExtResource("1_2wpvj")
+albedo_texture_force_srgb = true
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_kxi3i"]
 material = SubResource("StandardMaterial3D_ydbhs")
