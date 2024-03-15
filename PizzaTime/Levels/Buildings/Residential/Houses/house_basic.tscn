@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://c12hlgrvnnefe"]
+
+[ext_resource type="PackedScene" uid="uid://c2drta2s7q74t" path="res://Art/BlenderMeshes/Scenery/Residential/House_basic.blend" id="1_nokth"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pyrys"]
+size = Vector3(10.224, 2.5, 5.142)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2rqph"]
+size = Vector3(3.809, 2.5, 2.52)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f5bte"]
+size = Vector3(4.069, 2.5, 3.249)
+
+[node name="HouseBasic" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="House_basic" parent="." instance=ExtResource("1_nokth")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004, 1.25, -0.01)
+shape = SubResource("BoxShape3D_pyrys")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.755, 1.25, 3.76)
+shape = SubResource("BoxShape3D_2rqph")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.612, 1.25, 4.125)
+shape = SubResource("BoxShape3D_f5bte")

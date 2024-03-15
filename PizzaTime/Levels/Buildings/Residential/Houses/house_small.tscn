@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlr1ramm6vydl"]
+
+[ext_resource type="PackedScene" uid="uid://cv2ch1jufshg4" path="res://Art/BlenderMeshes/Scenery/Residential/House_small.blend" id="1_skrnq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pskn8"]
+size = Vector3(8.52431, 3.28613, 6.6347)
+
+[node name="HouseSmall" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="House_small" parent="." instance=ExtResource("1_skrnq")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61246, 1.64056, -0.205475)
+shape = SubResource("BoxShape3D_pskn8")

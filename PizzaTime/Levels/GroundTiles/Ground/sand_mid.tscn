@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx4f4cefeaxy"]
+
+[ext_resource type="PackedScene" uid="uid://kpoea38gn8ep" path="res://Art/BlenderMeshes/RoadTiles/GroundTiles/sand_mid.blend" id="1_ujatt"]
+
+[node name="sand_mid" instance=ExtResource("1_ujatt")]
+
+[node name="StaticBody3D" parent="sand_mid" index="0"]
+collision_layer = 4
+collision_mask = 0
